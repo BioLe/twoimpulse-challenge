@@ -34,8 +34,6 @@ const reducer = (state:IUserState, action: Actions) => {
     switch (action.type){
 
         case ActionType.SetUserDetails:
-            console.log("State:", state);
-            console.log("userDetailsPayload", action.payload);
             return {
                 ...state,
                 userDetails: action.payload
@@ -60,7 +58,6 @@ const UserProvider = ({children}: {children: JSX.Element }) => {
 
     const [state, dispatch] = useReducer(reducer, localState || initialState);
 
-    console.log("EstadoProvider", state);
     useEffect(() => {
         localStorage.setItem("userState", JSON.stringify(state));
       }, [state]);
